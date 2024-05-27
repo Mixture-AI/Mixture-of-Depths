@@ -1,2 +1,3 @@
-# Llama-MoD
-A Llama model with Mixture of Depths.
+# Mixutre-of-Depths
+
+> Google DeepMind: Mixture-of-Depths Unofficial Implementation.
