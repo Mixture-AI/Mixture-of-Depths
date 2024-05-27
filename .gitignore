@@ -1,0 +1,9 @@
+.ruff_cache/
+
+log/
+logs/
+data/
+datas/
+
+*.log
+*.pt
