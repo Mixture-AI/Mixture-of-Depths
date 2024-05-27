@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 
-class MoDTransformer(nn.Module):
+class MoDTransformerBlock(nn.Module):
     """Wrapper class for integrating a transformer block with Mixture-of-Depths routing.
 
     Attributes:
@@ -12,32 +12,6 @@ class MoDTransformer(nn.Module):
         aux_mlp (nn.Linear): MLP layer for calculating auxiliary routing decision.
         capacity (float): Capacity of the mixture-of-depths routing. Default is 0.125.
         aux_loss (torch.Tensor): Auxiliary loss for training auxiliary MLP.
-
-    Example:
-        >>> # Example Usage:
-        >>> transformer_block = SimpleTransformerBlock(hidden_size=512)
-        >>> mod_transformer = MoDTransformer(transformer_block, hidden_size=512)
-        >>> # Batch of 32 sequences, each with length 128 and hidden size 512
-        >>> x = torch.randn(32, 128, 512)
-        >>> output = mod_transformer(x)
-
-        >>> # Training Example:
-        >>> optimizer = torch.optim.Adam(mod_transformer.parameters(), lr=1e-4)
-        >>> criterion = nn.MSELoss()
-        >>> for epoch in range(10):
-        >>>     mod_transformer.train()
-        >>>     optimizer.zero_grad()
-        >>>     output = mod_transformer(x)
-        >>>     main_loss = criterion(output, x)  # This is a placeholder; use your actual task loss
-        >>>     total_loss = main_loss + mod_transformer.aux_loss
-        >>>     total_loss.backward()
-        >>>     optimizer.step()
-        >>>     print(f"Epoch {epoch+1}")
-        >>>     print(
-        >>>         f"Main Loss: {main_loss.item()}, "
-        >>>         f"Aux Loss: {mod_transformer.aux_loss.item()}, "
-        >>>         f"Total Loss: {total_loss.item()}"
-        >>>     )
 
     Notes:
         MoD Paper Link: https://arxiv.org/pdf/2404.02258
@@ -63,7 +37,7 @@ class MoDTransformer(nn.Module):
         Note:
             The default capacity of 0.125 is according to the original paper.
         """
-        super(MoDTransformer, self).__init__()
+        super(MoDTransformerBlock, self).__init__()
         self.transformer_block = transformer_block
         self.router_mlp: nn.Linear = nn.Linear(hidden_size, 1)
         self.aux_mlp: nn.Linear = nn.Linear(hidden_size, 1)
