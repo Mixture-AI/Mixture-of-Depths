@@ -1,3 +1,3 @@
-from .MoD import MoDTransformer
+from .MoD import MoDTransformerBlock
 
-__all__ = ["MoDTransformer"]
+__all__ = ["MoDTransformerBlock"]
