@@ -2,6 +2,10 @@
 
 > Google DeepMind: Mixture-of-Depths Unofficial Implementation.
 
+<div align="center">
+<img width="624" alt="MoD" src="https://github.com/Mixture-AI/Mixture-of-Depths/assets/103916249/4e84ca8b-4ace-422e-a8e9-84070a82b14e">
+</div>
+
 ## TODO List
 
 - [ ] Enable the **batching forward** operation.
